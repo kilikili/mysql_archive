@@ -1,0 +1,25 @@
+# PT-Archiver 設定檔 - 日誌歸檔
+# 檔案位置：./configs/archive_old_logs.conf
+
+# === 必要參數 ===
+TABLE_NAME="system_logs"
+DUE_DATE="2024-01-01"
+BATCH_LIMIT=5000
+IDX="idx_created_at"
+DATE_FIELD="created_at"
+
+# === 資料庫連線 ===
+DB_HOST="127.0.0.1"
+DB_USER="pt_archiver"
+DB_PASSWORD="strong_password"
+DB_NAME="application"
+ARCHIVE_DB="application_archive"
+
+# === 執行模式 ===
+MODE="archive"        # 歸檔後刪除來源
+
+# === 可選參數 ===
+CHARSET="utf8mb4"
+RUN_TIME="7200"       # 最多執行 2 小時
+SLEEP="0.5"           # 每批次間隔 0.5 秒（降低負載）
+DRY_RUN="yes"

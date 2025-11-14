@@ -1,0 +1,25 @@
+# PT-Archiver 設定檔 - 清理 90 天前資料
+# 檔案位置：/etc/pt-archiver/cleanup_90days.conf
+
+# === 必要參數 ===
+TABLE_NAME="user_activities"
+# 使用命令替換動態計算日期
+DUE_DATE=$(date -d "90 days ago" +%Y-%m-%d)
+BATCH_LIMIT=2000
+IDX="idx_activity_date"
+DATE_FIELD="activity_date"
+
+# === 資料庫連線 ===
+DB_HOST="127.0.0.1"
+DB_USER="pt_archiver"
+DB_PASSWORD="password123"
+DB_NAME="analytics"
+
+# === 執行模式 ===
+MODE="purge"
+
+# === 可選參數 ===
+CHARSET="utf8mb4"
+RUN_TIME="3600"       # 最多執行 1 小時
+SLEEP="1"             # 每批次間隔 1 秒
+DRY_RUN="yes"

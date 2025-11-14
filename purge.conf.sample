@@ -1,0 +1,27 @@
+# PT-Archiver 設定檔 - table_name 表清理
+# 檔案位置：/etc/pt-archiver/purge.conf
+
+# === 必要參數 ===
+TABLE_NAME="table_name"
+DUE_DATE="2015-07-08"
+BATCH_LIMIT=1000
+IDX="IDX_2"
+DATE_FIELD="FLD_NAME"
+
+# === 資料庫連線 ===
+DB_HOST="127.0.0.1"
+DB_USER="pt_archiver"
+DB_PASSWORD="your_password_here"
+DB_NAME="micropay"
+
+# === 執行模式 ===
+# purge: 純刪除
+# archive: 歸檔後刪除
+# archive-only: 只歸檔不刪除
+MODE="purge"
+
+# === 可選參數 ===
+CHARSET="utf8"
+RUN_TIME=""           # 最大執行時間（秒），空白表示不限制
+SLEEP="0"             # 每批次間隔（秒）
+DRY_RUN="yes"          # yes=測試模式，no=實際執行
