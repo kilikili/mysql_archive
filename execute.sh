@@ -48,6 +48,7 @@ DB_HOST=${DB_HOST:-127.0.0.1}
 DB_USER=${DB_USER:-pt_archiver}
 DB_PASSWORD=${DB_PASSWORD:-}
 DB_NAME=${DB_NAME:-micropay}
+DB_PORT=${DB_PORT:-3306}
 ARCHIVE_DB=${ARCHIVE_DB:-micropay_archive}
 MODE=${MODE:-purge}
 CHARSET=${CHARSET:-utf8}
@@ -79,11 +80,12 @@ fi
 
 # 建立 pt-archiver 基本參數
 PT_ARCHIVER_OPTS=(
-  --source "h=$DB_HOST,D=$DB_NAME,t=$TABLE_NAME,i=$IDX,u=$DB_USER"
+  --source "h=$DB_HOST,D=$DB_NAME,t=$TABLE_NAME,i=$IDX,u=$DB_USER,P=$DB_PORT"
   --where "$DATE_FIELD < '$DUE_DATE'"
   --limit="$BATCH_LIMIT"
   --commit-each
   --progress="$BATCH_LIMIT"
+  --no-check-charset
   --statistics
 )
 
